@@ -16,4 +16,22 @@ def guess(x):
     
     print(f"You guessed it!!!. The secret number is {guess} ")
 
+def computer_guess(n):
+    low = 0
+    high = n
+    feedback = ''
+    
+    while feedback != 'C':
+        guess = random.randint(low, high)
+        
+        feedback = input(f"The computers's guess is {guess}. Please respond if it is High (H) or Low (L) or Correct (C) : " )
+        
+        if feedback == 'H':
+            high = guess-1
+        elif feedback == 'L':
+            low = guess+1
+    
+    print(f'Congratulations computer, You have found the number, {guess}')
+
 guess(15)
+computer_guess(1000)
