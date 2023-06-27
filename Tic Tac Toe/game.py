@@ -1,4 +1,4 @@
-from player import HumanPlayer, RandomComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer, GeniusComputerPlayer
 import time
 
 class TicTacToe:
@@ -49,24 +49,24 @@ class TicTacToe:
         row_ind = square // 3
         row = self.board[row_ind*3 : (row_ind+1)*3]
         if all([spot == letter for spot in row]):
-            print("Won because of row")
+            #print("Won because of row")
             return True
         
         col_ind = square % 3
         column = [self.board[col_ind+i*3] for i in range(3)]
         if all([spot == letter for spot in column]):
-            print("Won because of column")
+            #print("Won because of column")
             return True
 
         if square%2 == 0:
             diagnol1 = [ self.board[i] for i in [0, 4, 8]]
             if all([spot == letter for spot in diagnol1]):
-                print("Won because of diag1")
+                #print("Won because of diag1")
                 return True
 
             diagnol2 = [ self.board[i] for i in [2, 4, 6]]
             if all([spot == letter for spot in diagnol2]):
-                print("Won because of diag2")
+                #print("Won because of diag2")
                 return True
         
         return False
@@ -104,6 +104,6 @@ def play(game, x_player, o_player, print_game=True):
 
 if __name__ == '__main__':
     x_player = HumanPlayer('X')
-    o_player = RandomComputerPlayer('O')
+    o_player = GeniusComputerPlayer('O')
     t = TicTacToe()
     play(t, x_player, o_player, print_game=True)
